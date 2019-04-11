@@ -7,29 +7,39 @@ This is a project number 3 of udacity Fullstack course. The purpose is a log ana
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See requirements for notes on how to deploy the project on a live system.
 
-### Project files
-  - newsdb.py - DB conection and functions to get the results
-  - news.py - Responsable for call de DB funcions, print the result and do some data manipulation
+### Requirements
 
-### Prerequisites
+To run this program you will need to install these structure:
+  - [Vagrant](https://www.vagrantup.com/downloads.html)
+  - [VirtualBox](https://www.virtualbox.org/wiki/Downloads)
+
+#### Config PostgreSQL (user, database schema)
+To run de code you will nedd to download de database on [newsdata.zip](https://d17h27t6h515a5.cloudfront.net/topher/2016/August/57b5f748_newsdata/newsdata.zip).
+Download and decompress the file.
+
+##### Importind DB
+To import database, on the directory do:
+
+<code>$ psql -d news -f news_sql_database_file </code>
+
 
 #### Creating DB table views
+You need to create some table views to run the code. To do this, run the code below to create views from file createviews.sql:
 
-You need to create 2 table views to run the code:
-
-<code>$ create view shortlog as select substring(path,10,50) from log where status = '200 OK'</code>
-
- <code>$ create view viewsArticles as select a.author, totals.views from articles a join (select substring, count(*) as views from shortlog group by substring) as totals on a.slug = totals.substring;</code>
+ <code>$ psql -d news -f createviews.sql</code>
 
 #### Dependencies
 
  BeautifulTable package <https://github.com/pri22296/beautifultable>.
-
  How to install:
  <code>$ pip install beautifultable </code>
 
+#### Project files
+  - newsdb.py - DB conection and functions to get the results
+  - news.py - Responsable for call de DB funcions, print the result and do some data manipulation
+  
 ### Running
 
 To execute the code just run the news.py file
