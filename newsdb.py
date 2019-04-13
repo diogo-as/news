@@ -13,8 +13,10 @@ def get_topArticles():
         c = db.cursor()
         c.execute("""select a.title, totals.views
                     from articles a
-                    join (select substring, count(*) as views from shortlog
-                    group by substring) as totals
+                    join
+                        (select substring, count(*) as views
+                        from shortlog
+                        group by substring) as totals
                     on a.slug = totals.substring
                     order by totals.views desc limit 3;""")
         return c.fetchall()
@@ -35,7 +37,8 @@ def get_topAuthors():
         c = db.cursor()
         c.execute("""select a.name, sum(b.views) as total_views
                     from authors a
-                    join viewsArticles b
+                    join
+                        viewsArticles b
                     on a.id = b.author
                     group by a.name
                     order by total_views desc
@@ -58,7 +61,8 @@ def get_topError():
         c = db.cursor()
         c.execute("""select a.data, a.total_ok, b.total_erros
                     from accessok a
-                    join accesserror b
+                    join
+                        accesserror b
                     on a.data = b.data;""")
         return c.fetchall()
     except psycopg2.DatabaseError as error:

@@ -32,14 +32,16 @@ You need to create some table views to run the code. To do this, run the code be
 
 #### Dependencies
 
- BeautifulTable package <https://github.com/pri22296/beautifultable>.
+ [Tabulate](https://pypi.org/project/tabulate/)
  How to install:
- <code>$ pip install beautifultable </code>
+ <code>$ pip install tabulate </code>
 
 #### Project files
   - newsdb.py - DB conection and functions to get the results
   - news.py - Responsable for call de DB funcions, print the result and do some data manipulation
-  
+  - result.txt - print of execution of news.py
+  - createviews.sql - Create views used by newsde.py
+
 ### Running
 
 To execute the code just run the news.py file
@@ -48,36 +50,32 @@ To execute the code just run the news.py file
 
 #### Output result example:
 
-- Top 3 popular articles:
+Top 3 popular articles:
+Article                             Views
+--------------------------------  -------
+Candidate is jerk, alleges rival   338647
+Bears love berries, alleges bear   253801
+Bad things gone, say good people   170098
 
-|             Article              | Views  |
-|----------------------------------|--------|
-| Candidate is jerk, alleges rival | 338647 |
-| Bears love berries, alleges bear | 253801 |
-| Bad things gone, say good people | 170098 |
+Top 3 authors by number of views:
+Author                              Total Views
+--------------------------------  -------------
+Candidate is jerk, alleges rival         338647
+Bears love berries, alleges bear         253801
+Bad things gone, say good people         170098
 
-- Top 3 authors by number of views:
-
-|         Author         | Total Views |
-|------------------------|-------------|
-|    Ursula La Multa     |   507594    |
-| Rudolf von Treppenwitz |   423457    |
-| Anonymous Contributor  |   170098    |
-
-- Days when request erros equals or greater than 1%:
-
-|    Day     | Erros | Acess OK |
-|------------|-------|----------|
-| 2016-07-17 | 54642 |   1265   |
-
+Days with request erros equals or greater than 1%
+Day           % Errors
+----------  ----------
+2016-07-17        2.32
 
 ## Changelog
 
 v1.0 Version submitted to the first evaluation
+v1.1 Updated by the first evaluation
 
 ## Contribute
 
-If you have any suggestions or bug reports, Please create a Issue. 
+If you have any suggestions or bug reports, Please create a Issue.
 
 Pull Requests are always welcome.
-
